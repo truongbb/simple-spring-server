@@ -2,7 +2,7 @@ package com.github.truongbb.simplespringserver.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -18,27 +18,22 @@ import java.util.Collections;
  */
 @Configuration
 @EnableSwagger2
-public class SwaggerConfiguration extends WebMvcConfigurationSupport {
+public class SwaggerConfiguration {
+
+  // to view swagger ui: http://localhost:9870/swagger-ui/index.html
 
   @Bean
   public Docket api() {
     return new Docket(DocumentationType.OAS_30)
       .select()
-      .apis(RequestHandlerSelectors.any())
+//      .apis(RequestHandlerSelectors.any())
+      .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
 //      .apis(RequestHandlerSelectors.basePackage("com.github.truongbb.simplespringserver"))
       .paths(PathSelectors.any())
       .build()
       .apiInfo(apiInfo())
       .useDefaultResponseMessages(false);
   }
-
-//  @Override
-//  protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-//    registry.addResourceHandler("swagger-ui.html")
-//      .addResourceLocations("classpath:/META-INF/resources/");
-//    registry.addResourceHandler("/webjars/**")
-//      .addResourceLocations("classpath:/META-INF/resources/webjars/");
-//  }
 
   private ApiInfo apiInfo() {
     return new ApiInfo(
