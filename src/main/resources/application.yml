@@ -5,6 +5,16 @@ server:
       charset: UTF-8
       enabled: true
 
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: '/swagger-ui.html'
+  pathsToMatch: '/simple-server/api/**'
+  packagesToScan: 'com.github.truongbb.simplespringserver.controller'
+  default-consumes-media-type: 'application/json'
+
 spring:
   application:
     name: 'simple-spring-server'
@@ -15,4 +25,3 @@ spring:
   data:
     rest:
       base-path: 'simple-server/api'
-

@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("${spring.data.rest.base-path}/v1/users")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class UserResource {
+public class UserController {
 
   @PostMapping
   public ResponseEntity<?> register(@RequestBody @Validated UserRequest userRequest) {
