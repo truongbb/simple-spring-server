@@ -5,7 +5,7 @@ server:
       charset: UTF-8
       enabled: true
 
-springdoc:
+springdoc: # documentation: https://springdoc.org/
   api-docs:
     enabled: true
   swagger-ui:
